@@ -2,6 +2,7 @@
 
 #include "Screen.h"
 #include "ScreenManager.h"
+#include "ScreenGame.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Text.h"

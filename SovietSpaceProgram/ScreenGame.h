@@ -28,4 +28,5 @@ public:
 	void setManager(ScreenManager*);
 	void changeScreen(int);
 	void addBuilding(int, int, int);
+	void clearBuildings();
 };

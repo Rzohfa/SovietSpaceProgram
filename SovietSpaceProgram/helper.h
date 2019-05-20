@@ -16,6 +16,7 @@ namespace game
 	void initKeyboard();
 	void pressKey(int);
 	void releaseKey(int);
+	bool getKey(int);
 	void pressMouse(int, int, int);
 	void releaseMouse();
 	bool isClicked();

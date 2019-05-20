@@ -1,13 +1,14 @@
-#include "ScreenMenu.h"
+﻿#include "ScreenMenu.h"
 #include <iostream>
 
 
 ScreenMenu::ScreenMenu(float x, float y)
 {
-	if (!background.loadFromFile("menu_background_2.png"))
+	if (!background.loadFromFile("menu_background_3.png"))
 	{
 		std::cout << "ERROR:\tCan't load menu background\n";
 	}
+	//TODO print Soviet Space Program logo (☭ ͜ʖ ☭)
 	width = x;
 	height = y;
 	scaleX = (float)(width / 320.0f);
@@ -65,8 +66,10 @@ void ScreenMenu::onMousePress()
 		&& game::getX() <= (buttons[0].x + 320) * scaleX
 		&& game::getY() >= buttons[0].y * scaleY
 		&& game::getY() <= (buttons[0].y + 180) * scaleY)
-			changeScreen(0);
-			
+	{
+		changeScreen(0);
+		((ScreenGame*)(manager->current_screen))->clearBuildings();
+	}
 }
 
 void ScreenMenu::onMouseDrag()

@@ -83,6 +83,7 @@ int main()
 
 			case sf::Event::KeyReleased:
 				game::releaseKey(event.key.code);
+				manager->onKeyPress();
 				break;
 
 			case sf::Event::MouseButtonPressed:
@@ -91,11 +92,13 @@ int main()
 						event.mouseButton.button,
 						event.mouseButton.x,
 						event.mouseButton.y);
+				manager->onMousePress();
 				break;
 
 			case sf::Event::MouseButtonReleased:
 				if (game::isClicked())
 					game::releaseMouse();
+				manager->onMousePress();
 				break;
 
 
@@ -104,8 +107,8 @@ int main()
 			
 		}
 		
-		manager->onKeyPress();
-		manager->onMousePress();
+		
+		
 
 		window.clear();
 		manager->displayScreen();
@@ -117,6 +120,3 @@ int main()
 
 	return 0;
 }
-
-
-

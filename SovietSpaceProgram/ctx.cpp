@@ -1,12 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
-#include <vector>
 #include "ctx.h"
 
 
 namespace ctx 
 {
-	std::vector<GLfloat> transformStack;
 	void fillStyle(float r, float g, float b) {
 		glColor3f(r / 255, g / 255, b / 255);
 	}
@@ -33,21 +31,13 @@ namespace ctx
 		glTexCoord2f(ix / image.getSize().x, (iy + ih) / image.getSize().y); glVertex2f(x, y + height);
 		glEnd();
 		glDisable(GL_TEXTURE_2D);
+		glFlush();
 	}
 	void save() {
 		glPushMatrix();
-		/*
-			GLfloat * mat = new GLfloat[16];
-		glGetFloatv(GL_MODELVIEW_MATRIX, mat);
-		transformStack.push_back(mat);
-		*/
 	}
 	void restore() {
 		glPopMatrix();
-		/*
-			glLoadMatrixf(transformStack.back());
-		transformStack.pop_back();
-		*/
 	}
 	void rotate(float angle) {
 		glRotatef(angle, 0, 0, 1);

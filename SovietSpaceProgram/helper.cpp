@@ -42,6 +42,11 @@ namespace game
 		}
 	}
 
+	bool getKey(int key)
+	{
+		return keyboard[key];
+	}
+
 	void pressMouse(int code, int x, int y)
 	{
 		click.clicked = true;

@@ -42,7 +42,8 @@ void ScreenPause::draw()
 
 void ScreenPause::onKeyPress()
 {
-
+	if (game::getKey(36))
+		manager->update(0);
 }
 
 void ScreenPause::onKeyRelease()

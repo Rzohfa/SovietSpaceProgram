@@ -30,7 +30,9 @@ void ScreenGame::draw()
 		-((float)1805 / 2), 
 		2400, 1805);
 
-	ctx::translate(-2400, -1805);
+	ctx::translate(x / -2, y / -2);
+
+	//ctx::translate(-2400, -1805);
 
 	for (auto i : game_objects)
 		i->draw();
@@ -40,7 +42,14 @@ void ScreenGame::draw()
 
 void ScreenGame::onKeyPress()
 {
-
+	if (game::getKey(36))
+		manager->update(2);
+	else if (game::getKey(1))
+		addBuilding(0, 500, 500);
+	else if (game::getKey(13))
+		addBuilding(1, 600, 600);
+	else if (game::getKey(12))
+		addBuilding(2, 700, 700);
 }
 
 void ScreenGame::onKeyRelease()
@@ -86,3 +95,9 @@ void ScreenGame::addBuilding(int choice, int x, int y)
 		game_objects.push_back((Building*)tmp);
 	}
 }
+
+void ScreenGame::clearBuildings()
+{
+	game_objects.clear();
+}
+

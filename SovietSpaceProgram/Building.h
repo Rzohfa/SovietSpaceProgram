@@ -23,7 +23,7 @@ protected:
 	localization position;
 public:
 	Building(int, int, int, int);
-	static sf::Texture texture;
+	sf::Texture texture;
 	int getX();
 	int getY();
 	int getWidth();

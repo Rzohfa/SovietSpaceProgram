@@ -1,19 +1,12 @@
 #pragma once
 
-#include "Screen.h"
+#include "ScreenMenu.h"
 #include "ScreenManager.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Text.h"
 
-struct button 
-{
-	int x;
-	int y;
-	std::string content;
-};
-
-class ScreenMenu : Screen {
+class ScreenPause : Screen {
 private:
 	sf::Texture background;
 	float height = 1.0f;
@@ -24,7 +17,7 @@ private:
 	ScreenManager* manager;
 	void drawButtons();
 public:
-	ScreenMenu(float, float);
+	ScreenPause(float, float);
 	void update();
 	void draw();
 	void onKeyPress();

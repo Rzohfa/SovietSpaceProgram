@@ -10,10 +10,10 @@ void NuclearPowerPlant::onClick()
 
 void NuclearPowerPlant::draw()
 {
-	/*ctx::save();
+	ctx::save();
 
 	ctx::translate(position.x, position.y);
 	ctx::drawImage(texture, 1, 0, 54, 33, 0, 0, 54, 33);
 
-	ctx::restore();*/
+	ctx::restore();
 }

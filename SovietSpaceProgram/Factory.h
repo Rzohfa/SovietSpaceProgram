@@ -6,6 +6,6 @@ class Factory : Building
 {
 public:
 	Factory(int, int);
-	virtual void draw();
-	virtual void onClick();
+	void draw();
+	void onClick();
 };

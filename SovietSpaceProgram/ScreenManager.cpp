@@ -12,15 +12,14 @@ void ScreenManager::addScreen(Screen* screen)
 	screens.push_back(screen);
 }
 
-void ScreenManager::displayScreen(int which)
+void ScreenManager::displayScreen()
 {
-	current_screen = screens[0];
 	current_screen->draw();
 }
 
-void ScreenManager::update()
+void ScreenManager::update(int choice)
 {
-	current_screen->draw();
+	current_screen = screens[choice];
 }
 
 void ScreenManager::draw()

@@ -4,7 +4,7 @@
 
 Building::Building(int x, int y, int width, int height)
 {
-	//texture.loadFromFile("buildings_tex.png");
+	texture.loadFromFile("buildings_tex.png");
 	position.x = x;
 	position.y = y;
 	size.width = width;

@@ -10,10 +10,12 @@ void Factory::onClick()
 
 void Factory::draw()
 {
-	//ctx::save();
-	//
-	//ctx::translate(position.x, position.y);
-	//ctx::drawImage(texture, 111, 7, 57, 27, 0, 0, 57, 27);
-	//
-	//ctx::restore();
+	ctx::save();
+	
+	ctx::scale(100, 100);
+	ctx::translate(position.x, position.y);
+	ctx::drawImage(texture, 111, 7, 57, 27, 0, 0, 57, 27);
+	//std::cout << "HAHA\n";
+	
+	ctx::restore();
 }

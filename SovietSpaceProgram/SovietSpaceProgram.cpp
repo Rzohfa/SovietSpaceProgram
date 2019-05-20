@@ -7,7 +7,8 @@
 #include "ScreenManager.h"
 #include "ScreenMenu.h"
 #include "Screen.h"
-
+#include "ScreenGame.h"
+#include "ScreenPause.h"
 
 
 int main()
@@ -47,7 +48,16 @@ int main()
 	//}
 
 	ScreenMenu* menu = new ScreenMenu((float)window.getSize().x, (float)window.getSize().y);
-	ScreenManager* manager = new ScreenManager((Screen*)menu);
+	ScreenGame* game = new ScreenGame("game_map.png", window.getSize().x, window.getSize().y);
+	ScreenPause* pause = new ScreenPause((float)window.getSize().x, (float)window.getSize().y);
+	ScreenManager* manager = new ScreenManager((Screen*)game);
+	manager->addScreen((Screen*)menu);
+	manager->addScreen((Screen*)pause);
+	manager->update(1);
+	menu->setManager(manager);
+	game->setManager(manager);
+	pause->setManager(manager);
+
 	//manager->addScreen((Screen*)menu);
 
 
@@ -62,12 +72,14 @@ int main()
 
 	float global_scale = 0.9f;
 	int choice = 0;
+	bool building = false;
+	int chosen = -1; // You were the chosen one
 
 	while (window.isOpen())
 	{
 		while (window.pollEvent(event))
 		{
-			if (sf::Event::MouseButtonPressed)
+			if (!building && sf::Event::MouseButtonPressed)
 				manager->onMousePress(&window, event);
 
 			//int x = event.mouseButton.button;
@@ -75,17 +87,54 @@ int main()
 			//mouse_button_pressed[0] = true;
 
 
+			if (!building && sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+				manager->update(0);
 			
+			if (!building && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+				manager->update(1);
+
+			if (!building && sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+				manager->update(2);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				manager->update(2);
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 				window.close();
+
+			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
+			//	std::cout << "\tB\n";
+			//	building = true;
+			//}
+			//	
+			//
+			//if (building && sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+			//	std::cout << "\tB1\n";
+			//	chosen = 0;
+			//}
+			//	
+			//
+			//if (building && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+			//	chosen = 1;
+			//
+			//if (building && sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+			//	chosen = 2;
+			//
+			//if (building && chosen != -1 && sf::Event::MouseButtonPressed)
+			//{
+			//	game->addBuilding(chosen, event.mouseButton.x, event.mouseButton.y);
+			//	chosen = -1;
+			//	building = false;
+			//	std::cout << "\tZbudowane\n";
+			//}
+				
 
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
 		
 		window.clear();
-		manager->displayScreen(0);
+		manager->displayScreen();
 
 		//map.setScale(global_scale, global_scale);
 		

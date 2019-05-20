@@ -6,15 +6,15 @@
 #include <vector>
 
 
-class ScreenManager : Screen
+class ScreenManager
 {
 public:
 	std::vector<Screen*> screens;
 	Screen* current_screen;
 	ScreenManager(Screen*);
 	void addScreen(Screen*);
-	void displayScreen(int);
-	void update();
+	void displayScreen();
+	void update(int);
 	void draw();
 	void onKeyPress();
 	void onKeyRelease();

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ctx.h"
+#include <SFML/Window.hpp>
 
 class Screen {
 public:
@@ -8,6 +9,6 @@ public:
 	virtual void draw() {}
 	virtual void onKeyPress() {}
 	virtual void onKeyRelease() {}
-	virtual void onMousePress() {}
+	virtual void onMousePress(sf::RenderWindow*, sf::Event) {}
 	virtual void onMouseDrag() {}
 };

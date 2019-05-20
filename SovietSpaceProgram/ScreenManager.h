@@ -6,13 +6,19 @@
 #include <vector>
 
 
-class ScreenManager
+class ScreenManager : Screen
 {
 public:
 	std::vector<Screen*> screens;
 	Screen* current_screen;
+	ScreenManager(Screen*);
 	void addScreen(Screen*);
 	void displayScreen(int);
-
+	void update();
+	void draw();
+	void onKeyPress();
+	void onKeyRelease();
+	void onMousePress(sf::RenderWindow*, sf::Event);
+	void onMouseDrag();
 };
 

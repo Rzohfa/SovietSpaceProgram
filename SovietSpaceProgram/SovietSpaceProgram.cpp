@@ -33,6 +33,8 @@ int main()
 	glClearColor(1.f, 1.f, 1.f, 1.f);
 	// End of configuration
 
+	bool mouse_button_pressed[2] = { false, false };
+
 	sf::Texture map_tex;
 	if (!map_tex.loadFromFile("game_map.png"))
 	{
@@ -44,9 +46,10 @@ int main()
 	//	std::cout << "ERROR:\tCan't load buildings\n";
 	//}
 
-	ScreenMenu* menu = new ScreenMenu();
-	ScreenManager* manager = new ScreenManager();
-	manager->addScreen((Screen*)menu);
+	ScreenMenu* menu = new ScreenMenu((float)window.getSize().x, (float)window.getSize().y);
+	ScreenManager* manager = new ScreenManager((Screen*)menu);
+	//manager->addScreen((Screen*)menu);
+
 
 
 	sf::Event event;
@@ -64,36 +67,15 @@ int main()
 	{
 		while (window.pollEvent(event))
 		{
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-			//	choice = 1;
+			if (sf::Event::MouseButtonPressed)
+				manager->onMousePress(&window, event);
 
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-			//	choice = 2;
+			//int x = event.mouseButton.button;
+				
+			//mouse_button_pressed[0] = true;
 
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
-			//	choice = 3;
 
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && event.type)
-			//	map.move(speed / global_scale, 0);
-
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			//	map.move(-speed / global_scale, 0);
-
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			//	map.move(0, speed / global_scale);
-
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			//	map.move(0, -speed / global_scale);
-
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))	// right down
-			//{
-			//	global_scale *= 1.0f / scale_speed;
-			//}
-
-			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) // left up
-			//{
-			//	global_scale *= scale_speed;
-			//}
+			
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 				window.close();
@@ -104,7 +86,6 @@ int main()
 		
 		window.clear();
 		manager->displayScreen(0);
-		//menu->draw();
 
 		//map.setScale(global_scale, global_scale);
 		
@@ -146,4 +127,37 @@ int main()
 }
 
 
+
+/////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+//	choice = 1;
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+//	choice = 2;
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+//	choice = 3;
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && event.type)
+//	map.move(speed / global_scale, 0);
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+//	map.move(-speed / global_scale, 0);
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+//	map.move(0, speed / global_scale);
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+//	map.move(0, -speed / global_scale);
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))	// right down
+//{
+//	global_scale *= 1.0f / scale_speed;
+//}
+
+//if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) // left up
+//{
+//	global_scale *= scale_speed;
+//}
 

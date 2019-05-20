@@ -29,7 +29,7 @@ void ScreenManager::draw()
 
 void ScreenManager::onKeyPress()
 {
-	
+	current_screen->onKeyPress();
 }
 
 void ScreenManager::onKeyRelease()
@@ -37,9 +37,9 @@ void ScreenManager::onKeyRelease()
 
 }
 
-void ScreenManager::onMousePress(sf::RenderWindow* window, sf::Event event)
+void ScreenManager::onMousePress()
 {
-	current_screen->onMousePress(window, event);
+	current_screen->onMousePress();
 }
 
 void ScreenManager::onMouseDrag()

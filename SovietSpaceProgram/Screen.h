@@ -2,6 +2,7 @@
 
 #include "ctx.h"
 #include <SFML/Window.hpp>
+#include "helper.h"
 
 class Screen {
 public:
@@ -9,6 +10,6 @@ public:
 	virtual void draw() {}
 	virtual void onKeyPress() {}
 	virtual void onKeyRelease() {}
-	virtual void onMousePress(sf::RenderWindow*, sf::Event) {}
+	virtual void onMousePress() {}
 	virtual void onMouseDrag() {}
 };

@@ -25,13 +25,12 @@ void ScreenGame::draw()
 
 	ctx::drawImage(
 		map, 
-		0, 0, 
-		2400, 
-		1805, 
+		0, 0, 2400, 1805, 
 		-((float)2400 / 2), 
 		-((float)1805 / 2), 
-		2400, 
-		1805);
+		2400, 1805);
+
+	ctx::translate(-2400, -1805);
 
 	for (auto i : game_objects)
 		i->draw();
@@ -49,7 +48,7 @@ void ScreenGame::onKeyRelease()
 
 }
 
-void ScreenGame::onMousePress(sf::RenderWindow* window, sf::Event event)
+void ScreenGame::onMousePress()
 {
 
 }

@@ -41,7 +41,7 @@ void ScreenMenu::draw()
 
 void ScreenMenu::onKeyPress()
 {
-
+	//if(game::k)
 }
 
 void ScreenMenu::onKeyRelease()
@@ -49,18 +49,24 @@ void ScreenMenu::onKeyRelease()
 
 }
 
-void ScreenMenu::onMousePress(sf::RenderWindow* window, sf::Event event)
+void ScreenMenu::onMousePress()
 {
-	if (event.mouseButton.x >= buttons[2].x * scaleX
-		&& event.mouseButton.x <= (buttons[2].x + 320) * scaleX
-		&& event.mouseButton.y >= buttons[2].y * scaleY
-		&& event.mouseButton.y <= (buttons[2].y + 180) * scaleY)
-		window->close();
-	else if (event.mouseButton.x >= buttons[0].x * scaleX
-		&& event.mouseButton.x <= (buttons[0].x + 320) * scaleX
-		&& event.mouseButton.y >= buttons[0].y * scaleY
-		&& event.mouseButton.y <= (buttons[0].y + 180) * scaleY)
-		manager->update(0);
+	if (game::isClicked()
+		&& game::getMouseKey() == 0
+		&& game::getX() >= buttons[2].x * scaleX
+		&& game::getX() <= (buttons[2].x + 320) * scaleX
+		&& game::getY() >= buttons[2].y * scaleY
+		&& game::getY() <= (buttons[2].y + 180) * scaleY)
+			game::closeWindow();
+			
+	else if (game::isClicked()
+		&& game::getMouseKey() == 0
+		&& game::getX() >= buttons[0].x * scaleX
+		&& game::getX() <= (buttons[0].x + 320) * scaleX
+		&& game::getY() >= buttons[0].y * scaleY
+		&& game::getY() <= (buttons[0].y + 180) * scaleY)
+			changeScreen(0);
+			
 }
 
 void ScreenMenu::onMouseDrag()

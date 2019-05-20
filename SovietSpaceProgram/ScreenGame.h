@@ -23,7 +23,7 @@ public:
 	void draw();
 	void onKeyPress();
 	void onKeyRelease();
-	void onMousePress(sf::RenderWindow*, sf::Event);
+	void onMousePress();
 	void onMouseDrag();
 	void setManager(ScreenManager*);
 	void changeScreen(int);

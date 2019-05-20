@@ -169,6 +169,7 @@
     <ClInclude Include="CoalPowerPlant.h" />
     <ClInclude Include="ctx.h" />
     <ClInclude Include="Factory.h" />
+    <ClInclude Include="helper.h" />
     <ClInclude Include="NuclearPowerPlant.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenGame.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="CoalPowerPlant.cpp" />
     <ClCompile Include="ctx.cpp" />
     <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="helper.cpp" />
     <ClCompile Include="NuclearPowerPlant.cpp" />
     <ClCompile Include="ScreenGame.cpp" />
     <ClCompile Include="ScreenManager.cpp" />

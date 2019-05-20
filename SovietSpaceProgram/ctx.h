@@ -2,7 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace ctx {
+namespace ctx 
+{
 	void fillStyle(float, float, float);
 	void translate(float, float);
 	void fillRect(float, float, float, float);

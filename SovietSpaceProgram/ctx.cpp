@@ -4,7 +4,8 @@
 #include "ctx.h"
 
 
-namespace ctx {
+namespace ctx 
+{
 	std::vector<GLfloat> transformStack;
 	void fillStyle(float r, float g, float b) {
 		glColor3f(r / 255, g / 255, b / 255);

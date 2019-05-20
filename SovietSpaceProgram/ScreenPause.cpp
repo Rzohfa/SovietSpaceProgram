@@ -50,21 +50,22 @@ void ScreenPause::onKeyRelease()
 
 }
 
-void ScreenPause::onMousePress(sf::RenderWindow * window, sf::Event event)
+void ScreenPause::onMousePress()
 {
-	if (event.mouseButton.x >= buttons[2].x * scaleX
-		&& event.mouseButton.x <= (buttons[2].x + 320) * scaleX
-		&& event.mouseButton.y >= buttons[2].y * scaleY
-		&& event.mouseButton.y <= (buttons[2].y + 180) * scaleY)
-	{
-		Sleep(1000);
-		manager->update(1);
-	}
-	else if (event.mouseButton.x >= buttons[0].x * scaleX
-		&& event.mouseButton.x <= (buttons[0].x + 320) * scaleX
-		&& event.mouseButton.y >= buttons[0].y * scaleY
-		&& event.mouseButton.y <= (buttons[0].y + 180) * scaleY)
-		manager->update(0);
+	if (game::isClicked()
+		&& game::getMouseKey() == 0
+		&& game::getX() >= buttons[2].x * scaleX
+		&& game::getX() <= (buttons[2].x + 320) * scaleX
+		&& game::getY() >= buttons[2].y * scaleY
+		&& game::getY() <= (buttons[2].y + 180) * scaleY)
+			manager->update(1);
+	else if (game::isClicked()
+		&& game::getMouseKey() == 0
+		&& game::getX() >= buttons[0].x * scaleX
+		&& game::getX() <= (buttons[0].x + 320) * scaleX
+		&& game::getY() >= buttons[0].y * scaleY
+		&& game::getY() <= (buttons[0].y + 180) * scaleY)
+			manager->update(0);
 }
 
 void ScreenPause::onMouseDrag()

@@ -171,12 +171,14 @@
     <ClInclude Include="Factory.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="NuclearPowerPlant.h" />
+    <ClInclude Include="Products.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenGame.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ScreenMenu.h" />
     <ClInclude Include="ScreenPause.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Building.cpp" />
@@ -191,6 +193,7 @@
     <ClCompile Include="ScreenPause.cpp" />
     <ClCompile Include="SovietSpaceProgram.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,7 +12,8 @@ ScreenGame::ScreenGame(std::string filename, int x, int y)
 
 void ScreenGame::update()
 {
-	
+	for (auto i : game_objects)
+		i->produce();
 }
 
 void ScreenGame::draw()
@@ -66,6 +67,14 @@ void ScreenGame::onKeyPress()
 		mx = 0;
 		my = 0;
 	}
+	else if (game::getKey(14))
+	{
+		if (paused)
+			game_time::resume();
+		else
+			game_time::pause();
+	}
+		
 	
 }
 
@@ -95,13 +104,14 @@ void ScreenGame::setManager(ScreenManager* manager)
 void ScreenGame::changeScreen(int choice)
 {
 	manager->update(choice);
+	game::pauseGame();
 }
 
 void ScreenGame::addBuilding(int choice, int x, int y)
 {
 	if (choice == 0)
 	{
-		Factory* tmp = new Factory(x, y);
+		Factory* tmp = new Factory(x, y, "");
 		game_objects.push_back((Building*)tmp);
 	}
 	else if (choice == 1)

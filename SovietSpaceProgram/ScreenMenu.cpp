@@ -68,6 +68,8 @@ void ScreenMenu::onMousePress()
 		&& game::getY() <= (buttons[0].y + 180) * scaleY)
 	{
 		changeScreen(0);
+		//game::initGame();
+		game::startGame();
 		((ScreenGame*)(manager->current_screen))->clearBuildings();
 	}
 }

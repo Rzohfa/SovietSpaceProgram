@@ -17,3 +17,8 @@ void CoalPowerPlant::draw()
 	
 	ctx::restore();
 }
+
+void CoalPowerPlant::produce()
+{
+
+}

@@ -17,3 +17,8 @@ void NuclearPowerPlant::draw()
 
 	ctx::restore();
 }
+
+void NuclearPowerPlant::produce()
+{
+
+}

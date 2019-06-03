@@ -83,6 +83,12 @@
     <ClInclude Include="ScreenMenu.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
+    <ClInclude Include="Products.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SovietSpaceProgram.cpp">
@@ -120,6 +126,9 @@
     </ClCompile>
     <ClCompile Include="ScreenMenu.cpp">
       <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="time.cpp">
+      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

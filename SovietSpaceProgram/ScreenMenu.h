@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Text.h"
+#include "helper.h"
 
 struct button 
 {

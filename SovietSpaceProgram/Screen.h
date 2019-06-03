@@ -2,7 +2,6 @@
 
 #include "ctx.h"
 #include <SFML/Window.hpp>
-#include "helper.h"
 
 class Screen {
 public:

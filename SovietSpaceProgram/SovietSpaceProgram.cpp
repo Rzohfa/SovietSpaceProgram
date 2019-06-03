@@ -14,6 +14,7 @@
 
 int main()
 {
+	// Game window configuration
 	sf::RenderWindow window(
 		sf::VideoMode(
 			sf::VideoMode::getDesktopMode().width, 
@@ -21,7 +22,6 @@ int main()
 		"Soviet Space Program", 
 		sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
-	game::setWindow(&window);
 	
 	// CTX & OGL configuration
 	glMatrixMode(GL_PROJECTION);
@@ -36,36 +36,29 @@ int main()
 	glClearColor(1.f, 1.f, 1.f, 1.f);
 	// End of configuration
 
-	bool mouse_button_pressed[2] = { false, false };
-	game::initKeyboard();
-
-	sf::Texture map_tex;
-	if (!map_tex.loadFromFile("game_map.png"))
-	{
-		std::cout << "ERROR:\tCan't load map\n";
-	}
-
+	// Screen initialization
 	ScreenMenu* menu = new ScreenMenu((float)window.getSize().x, (float)window.getSize().y);
 	ScreenGame* game = new ScreenGame("game_map.png", window.getSize().x, window.getSize().y);
 	ScreenPause* pause = new ScreenPause((float)window.getSize().x, (float)window.getSize().y);
 	ScreenManager* manager = new ScreenManager((Screen*)game);
+	
 	manager->addScreen((Screen*)menu);
 	manager->addScreen((Screen*)pause);
 	manager->update(1);
-	//manager->
 
 	menu->setManager(manager);
 	game->setManager(manager);
 	pause->setManager(manager);
 
+	// Initialize game helper
+	game::initGame(&window);
+	//game::setScreenManager(manager);
+	game::pauseGame();
+
+	// Event initialization
 	sf::Event event;
 	
-	std::cout << "Key Count:\t " << sf::Keyboard::KeyCount;
-
-	int choice = 0;
-	bool building = false;
-	int chosen = -1; // You were the chosen one
-
+	// Game loop start
 	while (window.isOpen())
 	{
 		while (window.pollEvent(event))
@@ -103,20 +96,16 @@ int main()
 
 
 			}	// END SWITCH
-					
-			
+								
 		}
 		
-		
-		
-
+		// Rendering & displaying screen
 		window.clear();
 		manager->displayScreen();
 		
-
 		window.display();
 	}
 
-
+	system("pause >nul");
 	return 0;
 }

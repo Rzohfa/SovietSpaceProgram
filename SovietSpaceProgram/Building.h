@@ -30,4 +30,5 @@ public:
 	int getHeight();
 	virtual void draw() {};
 	virtual void onClick() {};
+	virtual void produce() {};
 };

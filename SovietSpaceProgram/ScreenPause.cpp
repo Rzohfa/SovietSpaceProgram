@@ -66,7 +66,10 @@ void ScreenPause::onMousePress()
 		&& game::getX() <= (buttons[0].x + 320) * scaleX
 		&& game::getY() >= buttons[0].y * scaleY
 		&& game::getY() <= (buttons[0].y + 180) * scaleY)
-			manager->update(0);
+	{
+		manager->update(0);
+		game::startGame();
+	}
 }
 
 void ScreenPause::onMouseDrag()

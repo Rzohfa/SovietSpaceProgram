@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Text.h"
+#include "helper.h"
 
 class ScreenPause : Screen {
 private:
@@ -12,7 +13,7 @@ private:
 	float height = 1.0f;
 	float width = 1.0f;
 	float scaleX;
-	float scaleY;		// potencjalny œmietnik, DRY
+	float scaleY;		// potencjalny smietnik, DRY
 	std::vector<button> buttons;
 	ScreenManager* manager;
 	void drawButtons();

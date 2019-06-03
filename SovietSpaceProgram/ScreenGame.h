@@ -8,6 +8,9 @@
 #include "Factory.h"
 #include "CoalPowerPlant.h"
 #include "NuclearPowerPlant.h"
+#include "time.h"
+#include "helper.h"
+
 
 class ScreenGame : Screen {
 private:
@@ -20,6 +23,7 @@ private:
 	float my = 0;
 	float scale = 0.9f;
 	bool building = false;
+	bool paused = false;
 	int build_option = -1;
 public:
 	ScreenGame(std::string, int, int);

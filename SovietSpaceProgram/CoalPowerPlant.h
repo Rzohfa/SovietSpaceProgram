@@ -6,6 +6,7 @@ class CoalPowerPlant : Building
 {
 public:
 	CoalPowerPlant(int, int);
-	virtual void draw();
-	virtual void onClick();
+	void draw();
+	void onClick();
+	void produce();
 };

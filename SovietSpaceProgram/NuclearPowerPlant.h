@@ -6,6 +6,7 @@ class NuclearPowerPlant : Building
 {
 public:
 	NuclearPowerPlant(int, int);
-	virtual void draw();
-	virtual void onClick();
+	void draw();
+	void onClick();
+	void produce();
 };

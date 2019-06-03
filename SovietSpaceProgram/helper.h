@@ -1,7 +1,14 @@
 #pragma once
 
 #include <iostream>
+#include "Products.h"
+#include "Screen.h"
+#include "ScreenManager.h"
+#include <vector>
 #include <SFML/Graphics.hpp>
+#include "Factory.h"
+#include "time.h"
+#include <thread>
 
 namespace game
 {
@@ -13,6 +20,42 @@ namespace game
 		int y = -1;
 	};
 
+	// clay;
+	// coal;
+	// iron;
+	// uranium;
+	// copper;
+	// sand;
+	// oil;
+	// titanium;
+	// aluminium;
+	// magnesium;
+	// graphite;
+	//
+	// brick;
+	// glass;
+	// plastic;
+	// fuel_tank;
+	// cockpit_ppl;
+	// computer;
+	// cockpit_nonppl;
+	// engine;
+	// structural_el;
+	// circuits;
+	// basic_processing_unit;
+	// processing_unit;
+	// adv_processing_unit;
+	// super_computer;
+	// capacitor;
+	// resistor;
+	// transistor;
+	// memory_chip;
+	// diode;
+	// carbon_fiber;
+	// ablator;
+
+	
+	void initGame(sf::RenderWindow* ref);
 	void initKeyboard();
 	void pressKey(int);
 	void releaseKey(int);
@@ -25,6 +68,10 @@ namespace game
 	int getMouseKey();
 	void closeWindow();
 	void setWindow(sf::RenderWindow*);
+	void produce(std::string);
+
+	void startGame();
+	void pauseGame();
 }
 
 

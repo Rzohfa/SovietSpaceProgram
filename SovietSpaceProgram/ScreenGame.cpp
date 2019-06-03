@@ -12,7 +12,7 @@ ScreenGame::ScreenGame(std::string filename, int x, int y)
 
 void ScreenGame::update()
 {
-
+	
 }
 
 void ScreenGame::draw()
@@ -21,18 +21,14 @@ void ScreenGame::draw()
 
 	ctx::translate(x / 2, y / 2);
 	ctx::scale(scale, scale);
-	//ctx::translate(map.getPosition().x, map.getPosition().y);
+	ctx::translate(mx, my);
 
 	ctx::drawImage(
-		map, 
-		0, 0, 2400, 1805, 
-		-((float)2400 / 2), 
-		-((float)1805 / 2), 
+		map,
+		0, 0, 2400, 1805,
+		-((float)2400 / 2),
+		-((float)1805 / 2),
 		2400, 1805);
-
-	ctx::translate(x / -2, y / -2);
-
-	//ctx::translate(-2400, -1805);
 
 	for (auto i : game_objects)
 		i->draw();
@@ -45,11 +41,32 @@ void ScreenGame::onKeyPress()
 	if (game::getKey(36))
 		manager->update(2);
 	else if (game::getKey(1))
-		addBuilding(0, 500, 500);
-	else if (game::getKey(13))
-		addBuilding(1, 600, 600);
-	else if (game::getKey(12))
-		addBuilding(2, 700, 700);
+		building = true;
+	else if (building && game::getKey(27))
+		build_option = 0;
+	else if (building && game::getKey(28))
+		build_option = 1;
+	else if (building && game::getKey(29))
+		build_option = 2;
+	else if (game::getKey(72))
+		mx -= 50;
+	else if (game::getKey(71))
+		mx += 50;
+	else if (game::getKey(73))
+		my += 50;
+	else if (game::getKey(74))
+		my -= 50;
+	else if (game::getKey(15))
+		scale += 0.1f;
+	else if (game::getKey(11))
+		scale -= 0.1f;
+	else if (game::getKey(17))
+	{
+		scale = 0.9f;
+		mx = 0;
+		my = 0;
+	}
+	
 }
 
 void ScreenGame::onKeyRelease()
@@ -59,7 +76,10 @@ void ScreenGame::onKeyRelease()
 
 void ScreenGame::onMousePress()
 {
+	if (game::isClicked() && game::getMouseKey() == 0 && building && build_option != -1)
+		addBuilding(build_option, (game::getX() - (x * 0.5)) / scale - mx, (game::getY() - (y * 0.5)) / scale - my);
 
+	build_option = -1;
 }
 
 void ScreenGame::onMouseDrag()
@@ -83,7 +103,7 @@ void ScreenGame::addBuilding(int choice, int x, int y)
 	{
 		Factory* tmp = new Factory(x, y);
 		game_objects.push_back((Building*)tmp);
-	} 
+	}
 	else if (choice == 1)
 	{
 		CoalPowerPlant* tmp = new CoalPowerPlant(x, y);

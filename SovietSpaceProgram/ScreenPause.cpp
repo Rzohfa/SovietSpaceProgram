@@ -5,7 +5,7 @@
 
 ScreenPause::ScreenPause(float x, float y)
 {
-	if (!background.loadFromFile("menu_background_2.png"))
+	if (!background.loadFromFile("menu_background_3.png"))
 	{
 		std::cout << "ERROR:\tCan't load menu background\n";
 	}

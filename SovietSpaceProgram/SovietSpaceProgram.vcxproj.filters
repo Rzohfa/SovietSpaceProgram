@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{4399c89b-9e7e-487f-9ba1-57040d7fe7db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{88c5ee26-277b-4d48-a304-721f520a7c53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backend">
+      <UniqueIdentifier>{8e8497a1-ff98-436f-8e64-1c1d1d37670c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{4da47804-00c9-4e93-b1ab-3f28c14b61df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backend">
+      <UniqueIdentifier>{541c51fe-9f1c-462b-b9d2-f578996fe0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{e0cda586-2760-4006-b4fb-90c480767e0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="game_map.png">
@@ -30,78 +48,78 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Backend</Filter>
     </ClInclude>
     <ClInclude Include="CoalPowerPlant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ctx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Factory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Backend</Filter>
     </ClInclude>
     <ClInclude Include="NuclearPowerPlant.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Backend</Filter>
     </ClInclude>
-    <ClInclude Include="Screen.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files\Backend</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenPause.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ctx.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="helper.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenPause.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenGame.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenMenu.h">
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Building.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CoalPowerPlant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ctx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Factory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NuclearPowerPlant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SovietSpaceProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Building.cpp">
+      <Filter>Source Files\Backend</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenPause.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CoalPowerPlant.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="NuclearPowerPlant.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="ctx.cpp">
+      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="helper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenPause.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenGame.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenMenu.cpp">
+      <Filter>Source Files\Screens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

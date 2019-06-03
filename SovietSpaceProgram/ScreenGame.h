@@ -16,7 +16,11 @@ private:
 	sf::Texture map;
 	int x = 0;
 	int y = 0;
+	float mx = 0;
+	float my = 0;
 	float scale = 0.9f;
+	bool building = false;
+	int build_option = -1;
 public:
 	ScreenGame(std::string, int, int);
 	void update();

@@ -12,8 +12,11 @@ ScreenGame::ScreenGame(std::string filename, int x, int y)
 
 void ScreenGame::update()
 {
-	for (auto i : game_objects)
-		i->produce();
+	if (game_objects.size() > 0)
+	{
+		for (auto i : game_objects)
+			i->produce();
+	}
 }
 
 void ScreenGame::draw()
@@ -40,7 +43,10 @@ void ScreenGame::draw()
 void ScreenGame::onKeyPress()
 {
 	if (game::getKey(36))
+	{
 		manager->update(2);
+		game_time::pause();
+	}
 	else if (game::getKey(1))
 		building = true;
 	else if (building && game::getKey(27))

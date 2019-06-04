@@ -160,6 +160,7 @@ namespace game
 		game_resources.push_back({ "carbon fiber", 0 });
 		game_resources.push_back({ "ablator", 0});
 
+		game_time::timeReset();
 		time_thread = std::thread(game_time::timePass);
 	}
 

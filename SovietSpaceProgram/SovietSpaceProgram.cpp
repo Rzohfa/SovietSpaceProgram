@@ -52,7 +52,7 @@ int main()
 
 	// Initialize game helper
 	game::initGame(&window);
-	//game::setScreenManager(manager);
+	game_time::setScreenManager(manager);
 	game::pauseGame();
 
 	// Event initialization

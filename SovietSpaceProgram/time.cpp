@@ -20,6 +20,8 @@ namespace game_time
 
 				manager->current_screen->update();
 
+				printDate();
+
 				// Remake to normal date if possible
 				day++;
 				if (month == 2)
@@ -60,9 +62,6 @@ namespace game_time
 					month = 1;
 				}
 			}
-
-			if (notPaused == false)
-				std::cout << "paused\n";
 		}
 	}
 
@@ -76,11 +75,13 @@ namespace game_time
 	void pause()
 	{
 		notPaused = false;
+		std::cout << "paused\n";
 	}
 	
 	void resume()
 	{
 		notPaused = true;
+		std::cout << "resumed\n";
 	}
 
 	int getDay()

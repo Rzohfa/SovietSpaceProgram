@@ -17,8 +17,8 @@ int main()
 	// Game window configuration
 	sf::RenderWindow window(
 		sf::VideoMode(
-			sf::VideoMode::getDesktopMode().width, 
-			sf::VideoMode::getDesktopMode().height), 
+			1920, 
+			1080), 
 		"Soviet Space Program", 
 		sf::Style::Fullscreen);
 	window.setVerticalSyncEnabled(true);
@@ -26,7 +26,7 @@ int main()
 	// CTX & OGL configuration
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0, sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height, 0.0, -1.0, 1.0);
+	glOrtho(0.0, 1920, 1080, 0.0, -1.0, 1.0);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

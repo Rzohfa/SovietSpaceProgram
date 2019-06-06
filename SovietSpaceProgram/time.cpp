@@ -3,9 +3,7 @@
 
 namespace game_time
 {
-	int year = 0;
-	int month = 0;
-	int day = 0;
+	gameDate date;
 	bool notPaused = true;
 	ScreenManager* manager;
 	bool game_plays = true;
@@ -23,43 +21,43 @@ namespace game_time
 				printDate();
 
 				// Remake to normal date if possible
-				day++;
-				if (month == 2)
+				date.day++;
+				if (date.month == 2)
 				{
-					if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+					if (((date.year % 4 == 0) && (date.year % 100 != 0)) || (date.year % 400 == 0))
 					{
-						if (day > 29)
+						if (date.day > 29)
 						{
-							day = 1;
-							month++;
+							date.day = 1;
+							date.month++;
 						}
 					}
-					else if (day > 28)
+					else if (date.day > 28)
 					{
-						day = 1;
-						month++;
+						date.day = 1;
+						date.month++;
 					}
 				}
-				else if ((month < 8 && month % 2 == 1) || (month > 7 && month % 2 == 0))
+				else if ((date.month < 8 && date.month % 2 == 1) || (date.month > 7 && date.month % 2 == 0))
 				{
-					if (day > 31)
+					if (date.day > 31)
 					{
-						month++;
-						day = 1;
+						date.month++;
+						date.day = 1;
 					}
 				}
 				else
 				{
-					if (day > 30)
+					if (date.day > 30)
 					{
-						month++;
-						day = 1;
+						date.month++;
+						date.day = 1;
 					}
 				}
-				if (month > 12)
+				if (date.month > 12)
 				{
-					year++;
-					month = 1;
+					date.year++;
+					date.month = 1;
 				}
 			}
 		}
@@ -67,9 +65,9 @@ namespace game_time
 
 	void timeReset()
 	{
-		year = 1950;
-		month = 1;
-		day = 1;
+		date.year = 1950;
+		date.month = 1;
+		date.day = 1;
 	}
 
 	void pause()
@@ -86,22 +84,22 @@ namespace game_time
 
 	int getDay()
 	{
-		return day;
+		return date.day;
 	}
 	
 	int getYear()
 	{
-		return year;
+		return date.year;
 	}
 	
 	int getMonth()
 	{
-		return month;
+		return date.month;
 	}
 
 	void printDate()
 	{
-		std::cout << year << " " << month << " " << day << std::endl;
+		std::cout << date.year << " " << date.month << " " << date.day << std::endl;
 	}
 
 	void setScreenManager(ScreenManager* mgr)

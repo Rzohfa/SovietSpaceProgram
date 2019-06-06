@@ -4,6 +4,13 @@
 #include <Windows.h>
 #include <iostream>
 
+struct gameDate
+{
+	int day = 0;
+	int month = 0;
+	int year = 0;
+};
+
 namespace game_time
 {
 	void timePass();

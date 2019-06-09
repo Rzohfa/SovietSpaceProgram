@@ -89,11 +89,11 @@
     <ClInclude Include="time.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Popup.h">
-      <Filter>Header Files\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="Event.h">
       <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="history.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,8 +139,8 @@
     <ClCompile Include="Event.cpp">
       <Filter>Source Files\Backend</Filter>
     </ClCompile>
-    <ClCompile Include="Popup.cpp">
-      <Filter>Source Files\Screens</Filter>
+    <ClCompile Include="history.cpp">
+      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

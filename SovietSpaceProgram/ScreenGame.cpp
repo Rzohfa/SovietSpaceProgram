@@ -6,6 +6,14 @@ ScreenGame::ScreenGame(std::string filename, int x, int y)
 {
 	if (!map.loadFromFile(filename))
 		std::cout << "ERROR:\tCan't load map from file\n";
+	try
+	{
+		mapImg = map.copyToImage();
+	}
+	catch (std::exception e)
+	{
+		std::cout << e.what();
+	}
 	this->x = x;
 	this->y = y;
 }
@@ -23,6 +31,8 @@ void ScreenGame::draw()
 {
 	ctx::save();
 
+	ctx::save();
+
 	ctx::translate(x / 2, y / 2);
 	ctx::scale(scale, scale);
 	ctx::translate(mx, my);
@@ -36,6 +46,27 @@ void ScreenGame::draw()
 
 	for (auto i : game_objects)
 		i->draw();
+
+	ctx::restore();
+
+	std::vector<std::string> content;
+
+	content.push_back("You have been chosen to");
+	content.push_back("represent Matushka Rossiya in");
+	content.push_back("this space race between usand");
+	content.push_back("the Americans.");
+	content.push_back("Your job will be to lead this");
+	content.push_back("agency which will be responsible");
+	content.push_back("for realisation of our most");
+	content.push_back("advanced projects.");
+	content.push_back("You learned under best of our");
+	content.push_back("scientistand techniciansand");
+	content.push_back("we hope that with your help");
+	content.push_back("Motherland will conquer space!");
+
+	game::showPopup(520, 500, 3.5, 2, "Welcome Tovarish!", content);
+
+	content.clear();
 
 	ctx::restore();
 }
@@ -91,7 +122,7 @@ void ScreenGame::onKeyRelease()
 
 void ScreenGame::onMousePress()
 {
-	if (game::isClicked() && game::getMouseKey() == 0 && building && build_option != -1)
+	if (game::isClicked() && game::getMouseKey() == 0 && building && build_option != -1 && mapImg.getPixel(game::getX(), game::getY()).a != 0)
 		addBuilding(build_option, (game::getX() - (x * 0.5)) / scale - mx, (game::getY() - (y * 0.5)) / scale - my);
 
 	build_option = -1;

@@ -14,8 +14,7 @@ ScreenPause::ScreenPause(float x, float y)
 	scaleX = (float)(width / 320.0f);
 	scaleY = (float)(height / 180.0f);
 	addButton(14, 30, "Resume");
-	addButton(14, 75, "Save Game");
-	addButton(14, 120, "Exit to menu");
+	addButton(14, 75, "Exit to menu");
 }
 
 void ScreenPause::update()
@@ -55,10 +54,10 @@ void ScreenPause::onMousePress()
 {
 	if (game::isClicked()
 		&& game::getMouseKey() == 0
-		&& game::getX() >= buttons[2].x * scaleX
-		&& game::getX() <= (buttons[2].x + 320) * scaleX
-		&& game::getY() >= buttons[2].y * scaleY
-		&& game::getY() <= (buttons[2].y + 180) * scaleY)
+		&& game::getX() >= buttons[1].x * scaleX
+		&& game::getX() <= (buttons[1].x + 320) * scaleX
+		&& game::getY() >= buttons[1].y * scaleY
+		&& game::getY() <= (buttons[1].y + 180) * scaleY)
 			manager->update(1);
 	else if (game::isClicked()
 		&& game::getMouseKey() == 0
@@ -90,7 +89,7 @@ void ScreenPause::drawButtons()
 {
 	ctx::save();
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		ctx::fillStyle(60, 60, 60);
 		ctx::fillRect(buttons[i].x, buttons[i].y, 112, 30);

@@ -10,6 +10,7 @@
 #include "NuclearPowerPlant.h"
 #include "time.h"
 #include "helper.h"
+#include "Popup.h"
 
 
 class ScreenGame : Screen {
@@ -17,6 +18,7 @@ private:
 	std::vector<Building*> game_objects;
 	ScreenManager* manager;
 	sf::Texture map;
+	sf::Image mapImg;
 	int x = 0;
 	int y = 0;
 	float mx = 0;

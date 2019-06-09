@@ -21,7 +21,7 @@ private:
 	float height = 1.0f;
 	float width = 1.0f;
 	float scaleX;
-	float scaleY;		// potencjalny smietnik, DRY
+	float scaleY;		
 	std::vector<button> buttons;
 	ScreenManager* manager;
 	void drawButtons();

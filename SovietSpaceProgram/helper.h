@@ -9,6 +9,7 @@
 #include "Factory.h"
 #include "time.h"
 #include <thread>
+#include "Text.h"
 
 namespace game
 {
@@ -72,6 +73,8 @@ namespace game
 
 	void startGame();
 	void pauseGame();
+
+	void showPopup(int x, int y, float ts, float cs, std::string t, std::vector<std::string> c);
 }
 
 

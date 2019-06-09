@@ -23,4 +23,5 @@ namespace game_time
 	void printDate();
 	void setScreenManager(ScreenManager* mgr);
 	void stopGame();
+	bool getNotPaused();
 }

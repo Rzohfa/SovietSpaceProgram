@@ -12,6 +12,18 @@
 #include "helper.h"
 
 
+/*
+	UZYTE TEMATY
+
+	Wyjatki		(helper, press key)
+	Watki		(helper, init - time)
+	Iteratory	(screen game, do iteracji po budynkach)
+	Kontenery	(screen game, budynki)
+
+	KLASY		10 (stan przed ukonczeniem)
+*/
+
+
 int main()
 {
 	// Game window configuration

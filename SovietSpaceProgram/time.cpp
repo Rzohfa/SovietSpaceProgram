@@ -111,4 +111,10 @@ namespace game_time
 	{
 		game_plays = false;
 	}
+
+	bool getNotPaused()
+	{
+		return notPaused;
+	}
+
 }

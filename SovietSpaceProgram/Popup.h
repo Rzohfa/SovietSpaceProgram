@@ -1,19 +1,12 @@
 #pragma once
 
+#include <vector>
 #include "ctx.h"
 #include "Text.h"
+#include "time.h"
+#include "helper.h"
 
-class Popup
+namespace popup
 {
-private:
-	std::string title;
-	// content of popup? could be this:
-		std::string content;
-	float title_scale;
-	float content_scale;
-	int x;
-	int y;
-public:
-	Popup(std::string t, std::string c, float ts, float cs, int x, int y);
-	void showPopup();
+	void showPopup(int x, int y, float ts, float cs, std::string t, std::vector<std::string> c);
 };

@@ -27,6 +27,9 @@ private:
 	bool building = false;
 	bool paused = false;
 	int build_option = -1;
+	bool popupOpened = true;
+	bool historyPops[13] = { 0 };
+	int pi = 0;
 public:
 	ScreenGame(std::string, int, int);
 	void update();
@@ -39,4 +42,5 @@ public:
 	void changeScreen(int);
 	void addBuilding(int, int, int);
 	void clearBuildings();
+	void control();
 };

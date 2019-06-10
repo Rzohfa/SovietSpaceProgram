@@ -18,7 +18,7 @@ namespace game_time
 
 				manager->current_screen->update();
 
-				printDate();
+				//printDate();
 
 				// Remake to normal date if possible
 				date.day++;

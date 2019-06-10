@@ -10,6 +10,7 @@
 #include "time.h"
 #include <thread>
 #include "Text.h"
+#include "Popup.h"
 
 namespace game
 {
@@ -32,14 +33,15 @@ namespace game
 	// aluminium;
 	// magnesium;
 	// graphite;
+	// silicon;
 	//
 	// brick;
 	// glass;
 	// plastic;
 	// fuel_tank;
-	// cockpit_ppl;
+	// cockpit;
 	// computer;
-	// cockpit_nonppl;
+	// sond;
 	// engine;
 	// structural_el;
 	// circuits;
@@ -74,7 +76,7 @@ namespace game
 	void startGame();
 	void pauseGame();
 
-	void showPopup(int x, int y, float ts, float cs, std::string t, std::vector<std::string> c);
+	//sf::Image getScreenshot();
 }
 
 

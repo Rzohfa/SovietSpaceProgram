@@ -49,6 +49,5 @@ namespace popup
 	void VE33();
 	void SAL13();
 
-	void badEvent();
-	void goodEvent();
+	void gameFailed();
 };

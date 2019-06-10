@@ -30,3 +30,8 @@ int Building::getHeight()
 {
 	return size.height;
 }
+
+void Building::setPosition(int _x, int _y) {
+	position.x = _x;
+	position.y = _y;
+}

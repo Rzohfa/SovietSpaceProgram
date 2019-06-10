@@ -5,119 +5,33 @@ namespace game
 	Click click;
 	sf::RenderWindow* window;
 	bool keyboard[100];
-	std::vector<resource> resources;
-	std::vector<product> products;
-	int electricity_balance = 0;
+	//int electricity_balance = 0;
 	std::thread time_thread;
+	GameRes* resources = new GameRes();
+	int mission = 0;
+	Dates dates[12];
 
 	void initGame(sf::RenderWindow* ref)
 	{
 		initKeyboard();
 		setWindow(ref);
 		
-		std::vector<resource> craft_guide;
-		
-		craft_guide.push_back({ "clay", 4 });
-		products.push_back({ "brick", 4, craft_guide });
+		dates[0] = { 21,7,1957 };
+		dates[1] = { 4,10,1957 };
+		dates[2] = { 3,11,1957 };
+		dates[3] = { 4,1,1959 };
+		dates[4] = { 14,9,1959 };
+		dates[5] = { 7,10,1959 };
+		dates[6] = { 12,4,1961 };
+		dates[7] = { 16,6,1963 };
+		dates[8] = { 18,3,1965 };
+		dates[9] = { 1,3,1966 };
+		dates[10] = { 23,4,1971 };
+		dates[11] = { 15,7,1975 };
 
-		craft_guide.clear();
-		craft_guide.push_back({ "sand", 4 });
-		products.push_back({ "glass", 4, craft_guide });
+		resources->toZero();
 
-		craft_guide.clear();
-		craft_guide.push_back({ "coal", 1 });
-		craft_guide.push_back({ "oil", 1 });
-		products.push_back({ "plastic", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "iron", 4 });
-		craft_guide.push_back({ "silicon", 4 });
-		products.push_back({ "fuel tank", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "structural element", 4 });
-		craft_guide.push_back({ "computer", 4 });
-		craft_guide.push_back({ "glass", 4 });
-		products.push_back({ "cockpit", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "memory chip", 4 });
-		craft_guide.push_back({ "processor", 4 });
-		products.push_back({ "computer", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "computer", 4 });
-		craft_guide.push_back({ "structural element", 4 });
-		products.push_back({ "sond", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "fuel tank", 4 });
-		craft_guide.push_back({ "structural element", 4 });
-		products.push_back({ "engine", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "titanium", 4 });
-		craft_guide.push_back({ "aluminium", 4 });
-		craft_guide.push_back({ "magnesium", 4 });
-		craft_guide.push_back({ "carbon fiber", 4 });
-		craft_guide.push_back({ "ablator", 4 });
-		products.push_back({ "structural element", 4, craft_guide });
-		
-		craft_guide.clear();
-		craft_guide.push_back({ "plastic", 4 });
-		craft_guide.push_back({ "copper", 4 });
-		craft_guide.push_back({ "electronics", 4 });
-		products.push_back({ "processor", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "copper", 4 });
-		craft_guide.push_back({ "plastic", 4 });
-		products.push_back({ "electronics", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "electronics", 4 });
-		products.push_back({ "memory chip", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "coal", 4 });
-		craft_guide.push_back({ "plastic", 4 });
-		products.push_back({ "carbon fiber", 4, craft_guide });
-
-		craft_guide.clear();
-		craft_guide.push_back({ "coal", 4 });
-		craft_guide.push_back({ "graphite", 4 });
-		craft_guide.push_back({ "plastic", 4 });
-		products.push_back({ "ablator", 4, craft_guide });
-
-		craft_guide.clear();
-
-		resources.push_back({ "clay", 0 });
-		resources.push_back({ "coal", 0 });
-		resources.push_back({ "iron", 0 });
-		resources.push_back({ "copper", 0 });
-		resources.push_back({ "sand", 0 });
-		resources.push_back({ "oil", 0 });
-		resources.push_back({ "titanium", 0 });
-		resources.push_back({ "aluminium", 0 });
-		resources.push_back({ "magnesium", 0 });
-		resources.push_back({ "silicon", 0});
-		resources.push_back({ "graphite", 0 });
-		resources.push_back({ "brick", 0 });
-		resources.push_back({ "glass", 0 });
-		resources.push_back({ "plastic", 0 });
-		resources.push_back({ "fuel tank", 0 });
-		resources.push_back({ "cockpit", 0 });
-		resources.push_back({ "computer", 0 });
-		resources.push_back({ "sond", 0 });
-		resources.push_back({ "engine", 0 });
-		resources.push_back({ "structural element", 0 });
-		resources.push_back({ "processor", 0 });
-		resources.push_back({ "memory chip", 0 });
-		resources.push_back({ "electronics", 0 });
-		resources.push_back({ "carbon fiber", 0 });
-		resources.push_back({ "ablator", 0});
-
-		game_time::timeReset();
+		game_time::timeReset(1,5,1957);
 		time_thread = std::thread(game_time::timePass);
 	}
 
@@ -203,6 +117,11 @@ namespace game
 		window = ref;
 	}
 
+	void produce(std::string a)
+	{
+		resources->produce(a);
+	}
+
 	void closeWindow()
 	{
 		game_time::stopGame();
@@ -210,53 +129,6 @@ namespace game
 		window->close();
 	}
 
-	void produce(std::string to_produce)
-	{
-		if (electricity_balance > 0)
-		{
-			bool req_met = true;
-
-			for (auto i : products)
-			{
-				if (i.name == to_produce)
-				{
-					for (auto j : i.craft_recipe)
-					{
-						req_met = false;
-						for (auto k : resources)
-						{
-							if ((k.name == j.name) && (k.amount >= j.amount))
-							{
-								req_met = true;
-							}
-						}
-					}
-
-					if (req_met)
-					{
-						for (auto j : i.craft_recipe)
-						{
-							for (auto k : resources)
-							{
-								if ((k.name == j.name) && (k.amount >= j.amount))
-								{
-									k.amount -= j.amount;
-								}
-							}
-						}
-						for (auto j : resources)
-						{
-							if (j.name == i.name)
-							{
-								j.amount += i.produced_count;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	
 	void startGame()
 	{
 		game_time::resume();
@@ -267,8 +139,45 @@ namespace game
 		game_time::pause();
 	}
 
-	//sf::Image getScreenshot()
-	//{
-	//	return window->capture();
-	//}
+	bool missionFinished()
+	{
+		return resources->missionFinished(mission);
+	}
+
+	void finishMission()
+	{
+		mission++;
+		game_time::setDay(dates[mission].day - 1);
+		game_time::setMonth(dates[mission].month);
+		game_time::setYear(dates[mission].year);
+		resources->toZero();
+	}
+
+	bool missionFailed()
+	{
+		if (game_time::getDay() > dates[mission].day &&
+			game_time::getMonth() == dates[mission].month &&
+			game_time::getYear() == dates[mission].year)
+			return true;
+		
+		return false;
+	}
+
+	int getMission() {
+		return mission+1;
+	}
+
+	void setDate()
+	{
+		game_time::setDay(dates[mission].day);
+		game_time::setMonth(dates[mission].month - 1);
+		game_time::setYear(dates[mission].year);
+	}
+
+	void showResources()
+	{
+		resources->toPopup();
+	}
+
+
 }

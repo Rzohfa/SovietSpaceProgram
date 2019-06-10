@@ -14,14 +14,18 @@ struct gameDate
 namespace game_time
 {
 	void timePass();
-	void timeReset();
+	void timeReset(int, int, int);
 	int getDay();
 	int getYear();
 	int getMonth();
+	void setDay(int);
+	void setYear(int);
+	void setMonth(int);
 	void pause();
 	void resume();
 	void printDate();
 	void setScreenManager(ScreenManager* mgr);
 	void stopGame();
 	bool getNotPaused();
+	std::string toString();
 }

@@ -95,6 +95,12 @@
     <ClInclude Include="Popup.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="resources.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="Mission.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SovietSpaceProgram.cpp">
@@ -141,6 +147,12 @@
     </ClCompile>
     <ClCompile Include="Popup.cpp">
       <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="resources.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="Mission.cpp">
+      <Filter>Source Files\Backend</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

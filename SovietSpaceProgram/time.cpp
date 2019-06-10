@@ -14,7 +14,7 @@ namespace game_time
 		{
 			if (notPaused)
 			{
-				Sleep(1000);
+				Sleep(2000);
 
 				manager->current_screen->update();
 
@@ -63,11 +63,11 @@ namespace game_time
 		}
 	}
 
-	void timeReset()
+	void timeReset(int d, int m, int y)
 	{
-		date.year = 1950;
-		date.month = 1;
-		date.day = 1;
+		date.year = y;
+		date.month = m;
+		date.day = d;
 	}
 
 	void pause()
@@ -97,6 +97,21 @@ namespace game_time
 		return date.month;
 	}
 
+	void setDay(int i)
+	{
+		date.day = i;
+	}
+
+	void setYear(int i)
+	{
+		date.year = i;
+	}
+
+	void setMonth(int i)
+	{
+		date.month = i;
+	}
+
 	void printDate()
 	{
 		std::cout << date.year << " " << date.month << " " << date.day << std::endl;
@@ -115,6 +130,17 @@ namespace game_time
 	bool getNotPaused()
 	{
 		return notPaused;
+	}
+
+	std::string toString()
+	{
+		std::string ret;
+		ret = std::to_string(date.day);
+		ret.append(".");
+		ret.append(std::to_string(date.month));
+		ret.append(".");
+		ret.append(std::to_string(date.year));
+		return ret;
 	}
 
 }

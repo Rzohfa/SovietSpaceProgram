@@ -88,7 +88,7 @@ int main()
 
 			case sf::Event::KeyReleased:
 				game::releaseKey(event.key.code);
-				manager->onKeyPress();
+				manager->onKeyRelease();
 				break;
 
 			case sf::Event::MouseButtonPressed:
@@ -103,7 +103,7 @@ int main()
 			case sf::Event::MouseButtonReleased:
 				if (game::isClicked())
 					game::releaseMouse();
-				manager->onMousePress();
+				//manager->onMouseRelease();
 				break;
 
 
@@ -118,6 +118,6 @@ int main()
 		window.display();
 	}
 
-	system("pause >nul");
+	system("pause");
 	return 0;
 }

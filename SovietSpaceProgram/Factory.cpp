@@ -23,5 +23,7 @@ void Factory::draw()
 
 void Factory::produce()
 {
+	//std::cout << producing << std::endl;
+	
 	game::produce(producing);
 }

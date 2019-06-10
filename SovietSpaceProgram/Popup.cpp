@@ -794,23 +794,19 @@ namespace popup
 		content.clear();
 	}
 
-	void badEvent()
+	void gameFailed()
 	{
 		//Oh no!
 
-		content.push_back("Workers are massively ill!");
-		content.push_back("Working speed is decreased");
-		content.push_back("for a while!				 ");
-	}
+		content.push_back("You failed your motherland  ");
+		content.push_back("Tovarish.				   ");
+		content.push_back("Because of this disgrase you");
+		content.push_back("will be sent to gulag.	   ");
+		content.push_back("It was nice knowing you.	   ");
 
-	void goodEvent()
-	{
-		//Good news!
+		showPopup(520, 500, 3.5, 2, "Game failed!", content);
 
-		content.push_back("Workers are feeling			   ");
-		content.push_back("exceptionally good!			   ");
-		content.push_back("Their working speed is increased");
-		content.push_back("for a while!					   ");
+		content.clear();
 	}
 }
 

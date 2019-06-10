@@ -4,11 +4,8 @@
 
 ScreenGame::ScreenGame(std::string filename, int x, int y)
 {
-	if (!mapImg.loadFromFile(filename))
-		std::cout << "ERROR:\tCan't load map from file\n";
 	if (!map.loadFromFile(filename))
 		std::cout << "ERROR:\tCan't load map from file\n";
-	//mapImg = map.copyToImage();
 	this->x = x;
 	this->y = y;
 }
@@ -24,6 +21,12 @@ void ScreenGame::update()
 
 void ScreenGame::draw()
 {
+	ctx::save();
+
+	txt::printText(game_time::toString() + "  Mission: " + std::to_string(game::getMission()));
+
+	ctx::restore();
+
 	ctx::save();
 
 	ctx::save();
@@ -43,8 +46,19 @@ void ScreenGame::draw()
 		i->draw();
 
 	ctx::restore();
+	
+	//debug();
 
 	control();
+	
+	ctx::save();
+
+	if (showResources)
+	{
+		game::showResources();
+	}
+
+	ctx::restore();
 
 	ctx::restore();
 
@@ -52,6 +66,13 @@ void ScreenGame::draw()
 
 void ScreenGame::control()
 {
+	//game::pauseGame();
+	popupOpened = false;
+	if (game::missionFinished())
+	{
+		failable = false;
+		game::pauseGame();
+	}
 	if (!historyPops[0])
 	{
 		if (pi == 0)
@@ -94,6 +115,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[1] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[2] &&
@@ -120,6 +142,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[2] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[3] &&
@@ -146,6 +169,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[3] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[4] &&
@@ -172,6 +196,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[4] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[5] &&
@@ -198,6 +223,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[5] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[6] &&
@@ -224,6 +250,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[6] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[7] &&
@@ -250,6 +277,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[7] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[8] &&
@@ -276,6 +304,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[8] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[9] &&
@@ -302,6 +331,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[9] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[10] &&
@@ -328,6 +358,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[10] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[11] &&
@@ -350,6 +381,7 @@ void ScreenGame::control()
 			pi = 0;
 			game::startGame();
 			historyPops[11] = true;
+			popupOpened = true;
 		}
 	}
 	else if (!historyPops[12] &&
@@ -373,6 +405,25 @@ void ScreenGame::control()
 			historyPops[12] = true;
 			manager->update(1);
 		}
+	}
+	if (popupOpened)
+	{
+		game::setDate();
+	}
+	if (game::missionFailed() && failable)
+	{
+		if (pi == 0)
+		{
+			game::pauseGame();
+			popup::gameFailed();
+		}
+		else
+			manager->update(1);
+	}
+	if (!failable)
+	{
+		game::finishMission();
+		failable = true;
 	}
 }
 
@@ -418,23 +469,52 @@ void ScreenGame::onKeyPress()
 		else
 			game_time::pause();
 	}
-
-
+	else if (game::getKey(85))
+		choice = "ablator";
+	else if (game::getKey(86))
+		choice = "carbon fiber";
+	else if (game::getKey(87))
+		choice = "structural";
+	else if (game::getKey(88))
+		choice = "computer";
+	else if (game::getKey(89))
+		choice = "electronics";
+	else if (game::getKey(90))
+		choice = "engine";
+	else if (game::getKey(91))
+		choice = "fuel tank";
+	else if (game::getKey(92))
+		choice = "memory chip";
+	else if (game::getKey(93))
+		choice = "plastic";
+	else if (game::getKey(94))
+		choice = "processor";
+	else if (game::getKey(95))
+		choice = "sond";
+	else if (game::getKey(96))
+		choice = "cockpit";
+	else if (game::getKey(60))
+		showResources = true;
 }
 
 void ScreenGame::onKeyRelease()
 {
-
+	if (!game::getKey(60))
+		showResources = false;
 }
 
 void ScreenGame::onMousePress()
 {
-	if (game::isClicked() && game::getMouseKey() == 0 && building && build_option != -1) {
+	if (game::isClicked() && game::getMouseKey() == 0 && building && build_option != -1 && choice != "")
 		addBuilding(build_option, (game::getX() - (x * 0.5)) / scale - mx, (game::getY() - (y * 0.5)) / scale - my);
-		//std::cout << mapImg.getPixel((int)((game::getX() - (x * 0.5)) / scale - mx), (int)((game::getY() - (y * 0.5)) / scale - my)).a << std::endl;
+	if (game::isClicked() && game::getMouseKey() != 0 && building && build_option != -1)
+	{
+		build_option = -1;
+		building = false;
+		choice = "";
 	}
+		
 
-	
 }
 
 void ScreenGame::onMouseDrag()
@@ -456,14 +536,13 @@ void ScreenGame::changeScreen(int choice)
 void ScreenGame::addBuilding(int choice, int x, int y)
 {
 
-	//mapImg.getPixel(game::getX(), game::getY()).a != 0
-	if (true)
+	if ((int)ctx::getPixel(game::getX(), game::getY()).red  == 0 &&
+		(int)ctx::getPixel(game::getX(), game::getY()).green > 0 &&
+		(int)ctx::getPixel(game::getX(), game::getY()).blue == 0)
 	{
-		//mapImg = game::getScreenshot();
-		std::cout << mapImg.getPixel(game::getX(), game::getY()).g << std::endl;
 		if (choice == 0)
 		{
-			Factory* tmp = new Factory(x, y, "");
+			Factory* tmp = new Factory(x, y, this->choice);
 			game_objects.push_back((Building*)tmp);
 		}
 		else if (choice == 1)
@@ -471,15 +550,11 @@ void ScreenGame::addBuilding(int choice, int x, int y)
 			CoalPowerPlant* tmp = new CoalPowerPlant(x, y);
 			game_objects.push_back((Building*)tmp);
 		}
-		else if (choice == 2)
-		{
-			NuclearPowerPlant* tmp = new NuclearPowerPlant(x, y);
-			game_objects.push_back((Building*)tmp);
-		}
 	}
 
 	build_option = -1;
 	building = false;
+	this->choice = "";
 }
 
 void ScreenGame::clearBuildings()
@@ -487,3 +562,81 @@ void ScreenGame::clearBuildings()
 	game_objects.clear();
 }
 
+void ScreenGame::debug()
+{
+	if(pi == 0)
+		popup::R71();
+	else if(pi == 1)
+		popup::R72();
+	else if(pi == 2)
+		popup::S11();
+	else if(pi == 3)
+		popup::S12();
+	else if(pi == 4)
+		popup::S13();
+	else if(pi == 5)
+		popup::S21();
+	else if(pi == 6)
+		popup::S22();
+	else if(pi == 7)
+		popup::S23();
+	else if(pi == 8)
+		popup::L11();
+	else if(pi == 9)
+		popup::L12();
+	else if(pi == 10)
+		popup::L13();
+	else if(pi == 11)
+		popup::L21();
+	else if(pi == 12)
+		popup::L22();
+	else if(pi == 12)
+		popup::L23();
+	else if(pi == 13)
+		popup::L31();
+	else if(pi == 14)
+		popup::L32();
+	else if(pi == 15)
+		popup::L33();
+	else if(pi == 16)
+		popup::VT11();
+	else if(pi == 17)
+		popup::VT12();
+	else if(pi == 18)
+		popup::VT13();
+	else if(pi == 19)
+		popup::VT61();
+	else if(pi == 20)
+		popup::VT62();
+	else if(pi == 21)
+		popup::VT63();
+	else if(pi == 22)
+		popup::VH21();
+	else if(pi == 23)
+		popup::VH22();
+	else if(pi == 24)
+		popup::VH23();
+	else if(pi == 25)
+		popup::VE31();
+	else if(pi == 26)
+		popup::VE32();
+	else if(pi == 27)
+		popup::VE33();
+	else if(pi == 28)
+		popup::SAL11();
+	else if(pi == 29)
+		popup::SAL12();
+	else if(pi == 30)
+		popup::SAL13();
+	else if(pi == 31)
+		popup::SATP1();
+	else if(pi == 32)
+		popup::SATP2();
+	else if(pi == 33)
+		popup::end1();
+	else if(pi == 34)
+		popup::end2();
+	else if(pi == 35)
+		popup::gameFailed();
+
+}

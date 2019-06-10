@@ -28,6 +28,7 @@ public:
 	int getY();
 	int getWidth();
 	int getHeight();
+	void setPosition(int,int);
 	virtual void draw() {};
 	virtual void onClick() {};
 	virtual void produce() {};

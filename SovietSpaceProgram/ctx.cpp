@@ -45,4 +45,10 @@ namespace ctx
 	void scale(float x, float y) {
 		glScalef(x, y, 1);
 	}
+	Pixel getPixel(int x, int y)
+	{
+		Pixel pixel;
+		glReadPixels(x, 1080 - y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, &pixel);
+		return pixel;
+	}
 }

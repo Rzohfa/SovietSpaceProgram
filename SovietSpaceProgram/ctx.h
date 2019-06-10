@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/OpenGL.hpp>
 
 namespace ctx 
 {
@@ -11,5 +12,10 @@ namespace ctx
 	void save();
 	void restore();
 	void rotate(float);
-	void scale(float, float);
+	void scale(float, float); 
+	struct Pixel
+	{ 
+		GLubyte red, green, blue; 
+	};
+	Pixel getPixel(int x, int y);
 }

@@ -171,9 +171,11 @@
     <ClInclude Include="Event.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="helper.h" />
+    <ClInclude Include="Mission.h" />
     <ClInclude Include="NuclearPowerPlant.h" />
     <ClInclude Include="Popup.h" />
     <ClInclude Include="Products.h" />
+    <ClInclude Include="resources.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenGame.h" />
     <ClInclude Include="ScreenManager.h" />
@@ -189,8 +191,10 @@
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="helper.cpp" />
+    <ClCompile Include="Mission.cpp" />
     <ClCompile Include="NuclearPowerPlant.cpp" />
     <ClCompile Include="Popup.cpp" />
+    <ClCompile Include="resources.cpp" />
     <ClCompile Include="ScreenGame.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="ScreenMenu.cpp" />

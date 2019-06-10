@@ -18,18 +18,21 @@ private:
 	std::vector<Building*> game_objects;
 	ScreenManager* manager;
 	sf::Texture map;
-	sf::Image mapImg;
 	int x = 0;
 	int y = 0;
+	int build_option = -1;
 	float mx = 0;
 	float my = 0;
 	float scale = 0.9f;
+	bool showResources = false;
 	bool building = false;
 	bool paused = false;
-	int build_option = -1;
-	bool popupOpened = true;
+	bool failable = true;
+	bool popupOpened = false;
 	bool historyPops[13] = { 0 };
 	int pi = 0;
+	std::string choice = "";
+	void debug();
 public:
 	ScreenGame(std::string, int, int);
 	void update();

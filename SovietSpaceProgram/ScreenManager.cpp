@@ -34,7 +34,7 @@ void ScreenManager::onKeyPress()
 
 void ScreenManager::onKeyRelease()
 {
-
+	current_screen->onKeyRelease();
 }
 
 void ScreenManager::onMousePress()

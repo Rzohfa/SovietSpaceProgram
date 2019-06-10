@@ -73,13 +73,13 @@ namespace game_time
 	void pause()
 	{
 		notPaused = false;
-		std::cout << "paused\n";
+		//std::cout << "paused\n";
 	}
 	
 	void resume()
 	{
 		notPaused = true;
-		std::cout << "resumed\n";
+		//std::cout << "resumed\n";
 	}
 
 	int getDay()

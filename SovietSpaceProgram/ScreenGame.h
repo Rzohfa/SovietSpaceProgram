@@ -2,12 +2,9 @@
 
 #include "Screen.h"
 #include "ScreenManager.h"
-#include "Building.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "Factory.h"
-#include "CoalPowerPlant.h"
-#include "NuclearPowerPlant.h"
 #include "time.h"
 #include "helper.h"
 #include "Popup.h"
@@ -15,7 +12,7 @@
 
 class ScreenGame : Screen {
 private:
-	std::vector<Building*> game_objects;
+	std::vector<Factory*> game_objects;
 	ScreenManager* manager;
 	sf::Texture map;
 	int x = 0;

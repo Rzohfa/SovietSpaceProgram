@@ -71,11 +71,6 @@ void ScreenPause::onMousePress()
 	}
 }
 
-void ScreenPause::onMouseDrag()
-{
-
-}
-
 void ScreenPause::addButton(int x, int y, std::string content)
 {
 	button tmp;

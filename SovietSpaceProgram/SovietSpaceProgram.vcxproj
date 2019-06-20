@@ -165,14 +165,10 @@
     <Image Include="menu_background.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Building.h" />
-    <ClInclude Include="CoalPowerPlant.h" />
     <ClInclude Include="ctx.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="helper.h" />
-    <ClInclude Include="Mission.h" />
-    <ClInclude Include="NuclearPowerPlant.h" />
     <ClInclude Include="Popup.h" />
     <ClInclude Include="Products.h" />
     <ClInclude Include="resources.h" />
@@ -185,14 +181,10 @@
     <ClInclude Include="time.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Building.cpp" />
-    <ClCompile Include="CoalPowerPlant.cpp" />
     <ClCompile Include="ctx.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="helper.cpp" />
-    <ClCompile Include="Mission.cpp" />
-    <ClCompile Include="NuclearPowerPlant.cpp" />
     <ClCompile Include="Popup.cpp" />
     <ClCompile Include="resources.cpp" />
     <ClCompile Include="ScreenGame.cpp" />

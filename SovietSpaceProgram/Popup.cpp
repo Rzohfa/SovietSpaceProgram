@@ -31,19 +31,7 @@ namespace popup
 			ctx::translate(0, ((6 * cs) / 1));
 		}
 
-		//ctx::save();
-		//
-		//ctx::fillStyle(90, 90, 90);
-		//ctx::fillRect(0, 0, x - 40, 30);
-		//ctx::save();
-		//ctx::translate(
-		//	((112 * 0.65) - (5 * 4)),
-		//	(float)(((1080 + y) / 2) - 10));
-		//txt::printText("close");
-		//ctx::restore();
-		//
-		//
-		//ctx::restore();
+		
 
 		ctx::restore();
 	}

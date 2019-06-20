@@ -10,5 +10,4 @@ public:
 	virtual void onKeyPress() {}
 	virtual void onKeyRelease() {}
 	virtual void onMousePress() {}
-	virtual void onMouseDrag() {}
 };

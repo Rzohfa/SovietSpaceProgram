@@ -22,7 +22,7 @@ void ScreenGame::update()
 void ScreenGame::draw()
 {
 	ctx::save();
-
+	ctx::scale(2, 2);
 	txt::printText(game_time::toString() + "  Mission: " + std::to_string(game::getMission()));
 
 	ctx::restore();
@@ -436,32 +436,8 @@ void ScreenGame::onKeyPress()
 	}
 	else if (game::getKey(1))
 		building = true;
-	else if (building && game::getKey(27))
-		build_option = 0;
-	else if (building && game::getKey(28))
-		build_option = 1;
-	else if (building && game::getKey(29))
-		build_option = 2;
-	else if (game::getKey(72))
-		mx -= 50;
-	else if (game::getKey(71))
-		mx += 50;
-	else if (game::getKey(73))
-		my += 50;
-	else if (game::getKey(74))
-		my -= 50;
-	else if (game::getKey(15))
-		scale += 0.1f;
-	else if (game::getKey(11))
-		scale -= 0.1f;
 	else if (game::getKey(58))
 		pi++;
-	else if (game::getKey(17))
-	{
-		scale = 0.9f;
-		mx = 0;
-		my = 0;
-	}
 	else if (game::getKey(14))
 	{
 		if (paused)
@@ -469,29 +445,29 @@ void ScreenGame::onKeyPress()
 		else
 			game_time::pause();
 	}
-	else if (game::getKey(85))
+	else if (building && game::getKey(85))
 		choice = "ablator";
-	else if (game::getKey(86))
+	else if (building && game::getKey(86))
 		choice = "carbon fiber";
-	else if (game::getKey(87))
+	else if (building && game::getKey(87))
 		choice = "structural";
-	else if (game::getKey(88))
+	else if (building && game::getKey(88))
 		choice = "computer";
-	else if (game::getKey(89))
+	else if (building && game::getKey(89))
 		choice = "electronics";
-	else if (game::getKey(90))
+	else if (building && game::getKey(90))
 		choice = "engine";
-	else if (game::getKey(91))
+	else if (building && game::getKey(91))
 		choice = "fuel tank";
-	else if (game::getKey(92))
+	else if (building && game::getKey(92))
 		choice = "memory chip";
-	else if (game::getKey(93))
+	else if (building && game::getKey(93))
 		choice = "plastic";
-	else if (game::getKey(94))
+	else if (building && game::getKey(94))
 		choice = "processor";
-	else if (game::getKey(95))
+	else if (building && game::getKey(95))
 		choice = "sond";
-	else if (game::getKey(96))
+	else if (building && game::getKey(96))
 		choice = "cockpit";
 	else if (game::getKey(60))
 		showResources = true;
@@ -505,20 +481,14 @@ void ScreenGame::onKeyRelease()
 
 void ScreenGame::onMousePress()
 {
-	if (game::isClicked() && game::getMouseKey() == 0 && building && build_option != -1 && choice != "")
-		addBuilding(build_option, (game::getX() - (x * 0.5)) / scale - mx, (game::getY() - (y * 0.5)) / scale - my);
-	if (game::isClicked() && game::getMouseKey() != 0 && building && build_option != -1)
+	if (game::isClicked() && game::getMouseKey() == 0 && building && choice != "")
+		addBuilding((game::getX() - (x * 0.5)) / scale - mx, (game::getY() - (y * 0.5)) / scale - my);
+	if (game::isClicked() && game::getMouseKey() != 0 && building)
 	{
-		build_option = -1;
 		building = false;
 		choice = "";
 	}
 		
-
-}
-
-void ScreenGame::onMouseDrag()
-{
 
 }
 
@@ -533,26 +503,17 @@ void ScreenGame::changeScreen(int choice)
 	game::pauseGame();
 }
 
-void ScreenGame::addBuilding(int choice, int x, int y)
+void ScreenGame::addBuilding(int x, int y)
 {
 
 	if ((int)ctx::getPixel(game::getX(), game::getY()).red  == 0 &&
 		(int)ctx::getPixel(game::getX(), game::getY()).green > 0 &&
 		(int)ctx::getPixel(game::getX(), game::getY()).blue == 0)
 	{
-		if (choice == 0)
-		{
-			Factory* tmp = new Factory(x, y, this->choice);
-			game_objects.push_back((Building*)tmp);
-		}
-		else if (choice == 1)
-		{
-			CoalPowerPlant* tmp = new CoalPowerPlant(x, y);
-			game_objects.push_back((Building*)tmp);
-		}
+		Factory* tmp = new Factory(x, y, this->choice);
+		game_objects.push_back(tmp);
 	}
 
-	build_option = -1;
 	building = false;
 	this->choice = "";
 }

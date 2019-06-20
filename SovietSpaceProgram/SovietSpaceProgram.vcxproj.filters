@@ -47,15 +47,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Building.h">
-      <Filter>Header Files\Backend</Filter>
-    </ClInclude>
-    <ClInclude Include="CoalPowerPlant.h">
-      <Filter>Header Files\Backend</Filter>
-    </ClInclude>
-    <ClInclude Include="NuclearPowerPlant.h">
-      <Filter>Header Files\Backend</Filter>
-    </ClInclude>
     <ClInclude Include="Factory.h">
       <Filter>Header Files\Backend</Filter>
     </ClInclude>
@@ -98,24 +89,12 @@
     <ClInclude Include="resources.h">
       <Filter>Header Files\Backend</Filter>
     </ClInclude>
-    <ClInclude Include="Mission.h">
-      <Filter>Header Files\Backend</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SovietSpaceProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Building.cpp">
-      <Filter>Source Files\Backend</Filter>
-    </ClCompile>
-    <ClCompile Include="CoalPowerPlant.cpp">
-      <Filter>Source Files\Backend</Filter>
-    </ClCompile>
     <ClCompile Include="Factory.cpp">
-      <Filter>Source Files\Backend</Filter>
-    </ClCompile>
-    <ClCompile Include="NuclearPowerPlant.cpp">
       <Filter>Source Files\Backend</Filter>
     </ClCompile>
     <ClCompile Include="ctx.cpp">
@@ -149,9 +128,6 @@
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="resources.cpp">
-      <Filter>Source Files\Backend</Filter>
-    </ClCompile>
-    <ClCompile Include="Mission.cpp">
       <Filter>Source Files\Backend</Filter>
     </ClCompile>
   </ItemGroup>

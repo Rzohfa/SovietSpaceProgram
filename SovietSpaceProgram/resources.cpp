@@ -5,29 +5,18 @@ GameRes::GameRes()
 {
 	std::vector<resource> craft_guide;
 
-	//craft_guide.push_back({ "clay", 1 });
-	//products.push_back({ "brick", 1, craft_guide });
-
+	// creating crafting recepies for all items
 	craft_guide.clear();
-	//craft_guide.push_back({ "sand", 1 });
-	//products.push_back({ "glass", 1, craft_guide });
-
-	craft_guide.clear();
-	//craft_guide.push_back({ "coal", 1 });
-	//craft_guide.push_back({ "oil", 1 });
 	craft_guide.push_back({ "nic", 1 });
 	products[0] = { "plastic", 8, craft_guide };
 
 	craft_guide.clear();
-	//craft_guide.push_back({ "iron", 1 });
-	//craft_guide.push_back({ "silicon", 1 });
 	craft_guide.push_back({ "nic", 1 });
 	products[1] = { "fuel tank", 1, craft_guide };
 
 	craft_guide.clear();
 	craft_guide.push_back({ "structural", 1 });
 	craft_guide.push_back({ "computer", 1 });
-	//craft_guide.push_back({ "glass", 1 });
 	products[2] = { "cockpit", 1, craft_guide };
 
 	craft_guide.clear();
@@ -46,21 +35,16 @@ GameRes::GameRes()
 	products[5] = { "engine", 1, craft_guide };
 
 	craft_guide.clear();
-	//craft_guide.push_back({ "titanium", 1 });
-	//craft_guide.push_back({ "aluminium", 1 });
-	//craft_guide.push_back({ "magnesium", 1 });
 	craft_guide.push_back({ "carbon fiber", 1 });
 	craft_guide.push_back({ "ablator", 1 });
 	products[6] = { "structural", 1, craft_guide };
 
 	craft_guide.clear();
 	craft_guide.push_back({ "plastic", 4 });
-	//craft_guide.push_back({ "copper", 1 });
 	craft_guide.push_back({ "electronics", 4 });
 	products[7] = { "processor", 4, craft_guide };
 
 	craft_guide.clear();
-	//craft_guide.push_back({ "copper", 1 });
 	craft_guide.push_back({ "plastic", 1 });
 	products[8] = { "electronics", 8, craft_guide };
 
@@ -69,44 +53,16 @@ GameRes::GameRes()
 	products[9] = { "memory chip", 4, craft_guide };
 
 	craft_guide.clear();
-	//craft_guide.push_back({ "coal", 1 });
 	craft_guide.push_back({ "plastic", 1 });
 	products[10] = { "carbon fiber", 1, craft_guide };
 
-	craft_guide.clear();
-	//craft_guide.push_back({ "coal", 1 });
-	//craft_guide.push_back({ "graphite", 1 });
+	craft_guide.clear();\
 	craft_guide.push_back({ "plastic", 1 });
 	products[11] = { "ablator", 1, craft_guide };
 
 	craft_guide.clear();
 
-	//resources.push_back({ "clay", 0 });
-	//resources.push_back({ "coal", 0 });
-	//resources.push_back({ "iron", 0 });
-	//resources.push_back({ "copper", 0 });
-	//resources.push_back({ "sand", 0 });
-	//resources.push_back({ "oil", 0 });
-	//resources.push_back({ "titanium", 0 });
-	//resources.push_back({ "aluminium", 0 });
-	//resources.push_back({ "magnesium", 0 });
-	//resources.push_back({ "silicon", 0 });
-	//resources.push_back({ "graphite", 0 });
-	//resources.push_back({ "brick", 0 });
-	//resources.push_back({ "glass", 0 });
-	//resources.push_back({ "plastic", 0 });
-	//resources.push_back({ "fuel tank", 0 });
-	//resources.push_back({ "cockpit", 0 });
-	//resources.push_back({ "computer", 0 });
-	//resources.push_back({ "sond", 0 });
-	//resources.push_back({ "engine", 0 });
-	//resources.push_back({ "structural", 0 });
-	//resources.push_back({ "processor", 0 });
-	//resources.push_back({ "memory chip", 0 });
-	//resources.push_back({ "electronics", 0 });
-	//resources.push_back({ "carbon fiber", 0 });
-	//resources.push_back({ "ablator", 0 });
-
+	// creating warehouse item names
 	resourcesa[0] = "plastic";
 	resourcesa[1] = "fuel tank";
 	resourcesa[2] = "cockpit";
@@ -120,6 +76,7 @@ GameRes::GameRes()
 	resourcesa[10] = "carbon fiber";
 	resourcesa[11] = "ablator";
 
+	// creating warehouse for game
 	resourcesb[0] = 0;
 	resourcesb[1] = 0;
 	resourcesb[2] = 0;
@@ -190,11 +147,6 @@ void GameRes::toZero()
 	{
 		resourcesb[i] = 0;
 	}
-}
-
-void GameRes::electricity(int x)
-{
-	electricity_balance += x;
 }
 
 bool GameRes::missionFinished(int mission)

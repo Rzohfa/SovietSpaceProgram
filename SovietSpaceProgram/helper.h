@@ -29,65 +29,43 @@ namespace game
 		int year;
 	};
 
-	// clay;
-	// coal;
-	// iron;
-	// uranium;
-	// copper;
-	// sand;
-	// oil;
-	// titanium;
-	// aluminium;
-	// magnesium;
-	// graphite;
-	// silicon;
-	//
-	// brick;
-	// glass;
-	// plastic;
-	// fuel_tank;
-	// cockpit;
-	// computer;
-	// sond;
-	// engine;
-	// structural_el;
-	// circuits;
-	// basic_processing_unit;
-	// processing_unit;
-	// adv_processing_unit;
-	// super_computer;
-	// capacitor;
-	// resistor;
-	// transistor;
-	// memory_chip;
-	// diode;
-	// carbon_fiber;
-	// ablator;
-
-	
+	// Initializes all global game variables (eg. keyboard, mouse), starts time thread
 	void initGame(sf::RenderWindow* ref);
+	// Initializes keyboard array (set all keys to false)
 	void initKeyboard();
+	// Changes key value in array to true/false
 	void pressKey(int);
 	void releaseKey(int);
+	// Returns key value
 	bool getKey(int);
+	// Set mouse X, Y, keycode and clicked to true in Click variable
 	void pressMouse(int, int, int);
+	// Set above values to default and clicked to false
 	void releaseMouse();
+	// Returns if mouse key is clicked
 	bool isClicked();
+	// Returns coordinates of current mouse click and which (l/r) button was clicked
 	int getX();
 	int getY();
 	int getMouseKey();
+	// Closes the game
 	void closeWindow();
+	// Sets SFML render window for more flexibility in code
 	void setWindow(sf::RenderWindow*);
+	// Handles producing stuff to magazine 
 	void produce(std::string);
 
+	// Handles time without need to include game_time namespace
 	void startGame();
 	void pauseGame();
 
+	// Mission control functions
 	bool missionFinished();
 	void finishMission();
 	bool missionFailed();
-
 	int getMission();
 	void setDate();
+
+	// Shows resources popup
 	void showResources();
 }

@@ -3,7 +3,6 @@
 #include <SFML/OpenGL.hpp>
 #include "ctx.h"
 #include <iostream>
-#include "Building.h"
 #include "ScreenManager.h"
 #include "ScreenMenu.h"
 #include "Screen.h"
@@ -15,12 +14,12 @@
 /*
 	UZYTE TEMATY
 
-	Wyjatki		(helper, press key)
+	Wyjatki		(helper, press/release key)
 	Watki		(helper, init - time)
 	Iteratory	(screen game, do iteracji po budynkach)
 	Kontenery	(screen game, budynki)
 
-	KLASY		10 (stan przed ukonczeniem)
+	KLASY		7
 */
 
 

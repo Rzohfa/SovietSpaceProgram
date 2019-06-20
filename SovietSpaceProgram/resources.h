@@ -15,10 +15,8 @@ private:
 public:
 	GameRes();
 	void produce(std::string);
-	//void mine(std::string);
 	void toPopup();
 	void toZero();
 	bool missionFinished(int);
-	void electricity(int);
 	bool canBuild(std::string, int);
 };
